@@ -1,6 +1,6 @@
 @app.post("/ask")
 @app.get("/ask")
-def ask_ciq(prompt: str, llms: str = "claude,gpt"):
+def ask_ciq(prompt: str, llms: str = "claude,grok,gpt"):
     with httpx.Client(headers=HEADERS, base_url=BASE, timeout=180.0) as c:
         threads = c.get("/get_threads").json()["threads"]
         thread_id = threads[0] if threads else "default"
